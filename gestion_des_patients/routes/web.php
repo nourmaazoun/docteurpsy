@@ -51,9 +51,11 @@ Route::get('/succ', function () {
 Route::get('/Consultations', [ConsultationController::class, 'showConsultation'])->name('consultations.index');
 
 // Patients
-Route::get('/Patients', [PatientController::class, 'showPatient'])->name('patients.index');
+Route::get('/Patients', [patientcontroller::class, 'showPatient'])->name('patients.index');
+Route::get('/patient/delete/{id}', [patientcontroller::class, 'deletePatient'])->name('patient.delete');
 
-// Ordonnances
+
+
 Route::get('/datatable-Ordonnances', [OrdonnanceController::class, 'showOrdonnance'])->name('ordonnances.index');
 
 // Rendez-vous

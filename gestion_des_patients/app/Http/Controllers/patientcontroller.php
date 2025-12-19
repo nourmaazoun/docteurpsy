@@ -84,6 +84,7 @@ class patientcontroller extends Controller
         // Redirigez l'utilisateur vers la page des patients avec un message de succès
         return redirect()->route('patients.index')->with('success', 'Patient mis à jour avec succès.');
     }
+// Ajoutez cette méthode dans patientcontroller.php
 public function deletePatient($id)
 {
     // Récupérez le patient à supprimer
