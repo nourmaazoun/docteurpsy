@@ -92,3 +92,9 @@ Route::get('/admins/{id}/edit', [AdminController::class, 'edit'])->name('admin.e
 
 Route::post('/admins/{id}/update', [AdminController::class, 'update'])->name('admin.update');
 Route::get('/admin/delete/{id}', [AdminController::class, 'destroy'])->name('admin.delete');
+
+Route::get('/calendrier', function () {
+    return view('calendrier');
+});
+
+Route::get('/calendar/events', [RendezVousController::class, 'calendarEvents']);

@@ -164,4 +164,44 @@ class RendezVousController extends Controller
 
         return redirect()->back()->with('error', 'Rendez-vous non trouvé.');
     }
+   public function calendarEvents()
+{
+    try {
+        $events = Rendez_vous::with('patient')->get()->map(function ($r) {
+            return [
+                'id' => $r->id,
+                'title' => $r->patient 
+                    ? $r->patient->Nom . ' ' . $r->patient->Prénom 
+                    : 'Patient inconnu',
+                'start' => $r->Date . 'T' . $r->Heure,
+                'extendedProps' => [
+                    'status' => $r->Statut,
+                    'remarques' => $r->Remarques,
+                ],
+                'className' => $this->getStatusClass($r->Statut) // <-- ICI
+            ];
+        });
+
+        return response()->json($events);
+        
+    } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
+}
+
+
+private function getStatusClass($status)
+{
+    $status = strtolower($status);
+    $status = preg_replace('/[^a-z0-9]/', '', $status);
+    
+    switch ($status) {
+        case 'encours': return 'en-cours';
+        case 'confirme': return 'confirme';
+        case 'annule': return 'annule';
+        case 'termine': return 'termine';
+        default: return 'en-cours';
+    }
+}
+    
 }
