@@ -90,20 +90,18 @@
 
 <td>
     <!-- Bouton Éditer -->
-    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editPatient{{$p->id}}">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-            <!-- ... icône édition ... -->
-        </svg>
-    </button>
-    
+<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editPatient{{$p->id}}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+        <!-- ... icône édition ... -->
+    </svg>
+    Éditer
+</button>
     <!-- Lien de Suppression (GET) -->
-    <a href="/patient/delete/{{$p->id}}" 
-       class="btn btn-danger btn-sm" 
-       onclick="return confirm('Voulez-vous vraiment supprimer ce patient ?')">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-            <!-- ... icône suppression ... -->
-        </svg>
-    </a>
+  <a href="/patient/delete/{{$p->id}}" 
+   class="btn btn-danger btn-sm" 
+   onclick="return confirm('Voulez-vous vraiment supprimer ce patient ?')">
+    Supprimer
+</a>
 </td>
                                             </tr>
                                             @endforeach
